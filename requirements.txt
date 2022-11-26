@@ -4,7 +4,7 @@ dj-database-url==1.0.0
 Django==4.1.2
 django-heroku==0.3.1
 django-leaflet==0.28.3
-GDAL @ file:///C:/Users/Christopher/Downloads/GDAL-3.4.3-cp310-cp310-win_amd64.whl
+
 gunicorn==20.1.0
 Pillow==9.3.0
 psycopg2==2.9.5
