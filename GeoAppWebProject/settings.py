@@ -17,6 +17,10 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+if os.name == 'nt':
+    VENV_BASE = os.environ['VIRTUAL_ENV']
+    os.environ['PATH'] = os.path.join(VENV_BASE, 'Lib\\site-packages\\osgeo') + ';' + os.environ['PATH']
+    os.environ['PROJ_LIB'] = os.path.join(VENV_BASE, 'Lib\\site-packages\\osgeo\\data\\proj') + ';' + os.environ['PATH']
 
  
 # Quick-start development settings - unsuitable for production
@@ -28,7 +32,7 @@ SECRET_KEY = 'django-insecure-bg5ua$9v-w@p1#4)^_$9ywy)zsgf-6f2ot2m5^)7n*@g9no#oj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['landmanage.com']
+ALLOWED_HOSTS = ["*"]
 
 LEAFLET_CONFIG ={
     # "SPATIAL_EXTENT":(5.0,44.0,7.5,46),
@@ -141,7 +145,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
-
+django_heroku.settings(locals())
 MEDIA_URL='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 
